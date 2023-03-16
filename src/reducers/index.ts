@@ -7,6 +7,7 @@ const stateIndex = {
 }
 
 const indexReducers = (state = stateIndex, action: actionInt) => {
+  console.log(action, 'action');
   switch (action.type) {
     case account:
       return { ...state, account: action.data }

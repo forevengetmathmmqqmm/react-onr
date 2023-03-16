@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {connect} from 'react-redux';
+import {accountInt} from '../interfaces/index'
 
-const Home = () => {
+const Home = (props: any) => {
+  const [account, setAccount] = useState<accountInt>({name: '', age: 0});
+  useEffect(() => {
+    setAccount(props.account)
+  },[props]);
   return (
-    <div>home</div>
+    <div>
+      <div>{account.name}</div>
+      <div>{account.age?.toString()}</div>
+    </div>
   )
 }
-export default Home;
+const mapToStatus = (state: { indexReducer: { account: any; }; }) => {
+  return {
+    account: state.indexReducer.account
+  }
+}
+
+export default connect(mapToStatus, null)(Home);
