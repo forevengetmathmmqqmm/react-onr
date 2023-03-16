@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'antd/dist/antd.min.js';
 import './index.css';
+import 'lib-flexible'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
