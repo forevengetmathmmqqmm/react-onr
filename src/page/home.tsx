@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
-import {accountInt} from '../interfaces/index'
 
 const Home = (props: any) => {
-  const [account, setAccount] = useState<accountInt>({name: '', age: 0});
+  const [account, setAccount] = useState({nickname: '', age: 0});
   useEffect(() => {
     setAccount(props.account)
   },[props]);
   return (
     <div>
-      <div>{account.name}</div>
+      <div>{account.nickname}</div>
       <div>{account.age?.toString()}</div>
     </div>
   )

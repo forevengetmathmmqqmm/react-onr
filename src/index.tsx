@@ -6,6 +6,8 @@ import 'lib-flexible'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
+import axiosInstance from './utils/reques';
+import {AxiosProvider} from 'react-axios';
 import store from './store';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +15,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <App />
+    <AxiosProvider instance={axiosInstance}>
+      <App />
+    </AxiosProvider>
   </Provider>
 );
 
