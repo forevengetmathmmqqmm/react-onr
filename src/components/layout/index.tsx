@@ -8,10 +8,11 @@ const Layout = (props: any) => {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!props.isLogin) {
+    const token = localStorage.getItem('token');
+    if (!props.isLogin && !token) {
       navigate('/login');
     }
-  },[location])
+  }, [location])
   return (
     <div>
       <SideMenu />

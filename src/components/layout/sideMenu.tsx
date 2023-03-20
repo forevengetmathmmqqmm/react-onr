@@ -10,7 +10,7 @@ const sideMenu = () => {
   const [items, setItem] = useState<MenuItem[]>();
   useEffect(() => {
     const itemlist: MenuItem[] = [];
-    getItem(routers.routes[1].children as RouteObject[], itemlist);
+    getItem(routers.routes[0].children as RouteObject[], itemlist);
   }, [])
   function getItem(list: RouteObject[], itemlist: any) {
     list.forEach(item => {

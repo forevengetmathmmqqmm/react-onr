@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import { withAxios } from 'react-axios';
 import { connect } from 'react-redux';
-import {actionInt} from '../interfaces/index';
+import { actionInt } from '../interfaces/index';
 import { loginAct } from "../actions/index";
 import { useNavigate } from "react-router-dom";
 import { accountAct } from "../actions/index";
@@ -11,18 +11,18 @@ import { accountAct } from "../actions/index";
 const login = (props: any) => {
 	const navigate = useNavigate();
 	const onFinish = async (values: any) => {
-		const res =  await props.axios.post('user/login', values);
-		console.log('res', res);
-		
+		const res = await props.axios.post('user/login', values);
 		localStorage.setItem('token', res.data.data.token);
 		localStorage.setItem('id', res.data.data.hash_id);
 		const userInfoRes = await props.axios.get('user/detail/' + res.data.data.hash_id);
 		const actionAcc = accountAct(userInfoRes.data.data);
+		localStorage.setItem('userInfo', JSON.stringify(userInfoRes.data.data));
+
 		props.setAccount(actionAcc);
 		const action = loginAct(true);
 		props.setLoginStatus(action);
 		navigate('/home');
-		
+
 	};
 	return (
 		<div className='w-[100vw] h-[100vh] bg-[#2d3a4c] flex justify-center items-center'>
@@ -39,7 +39,7 @@ const login = (props: any) => {
 						rules={[{ required: true, message: 'Please input your Username!' }]}
 					>
 						<Input className='w-[448px] h-[48px]' prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-					</Form.Item> 
+					</Form.Item>
 					<Form.Item
 						name="password"
 						rules={[{ required: true, message: 'Please input your Password!' }]}
@@ -62,8 +62,8 @@ const login = (props: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
 	return {
-		setLoginStatus: (action:actionInt) => dispatch(action),
-		setAccount: (action:actionInt) => dispatch(action)
+		setLoginStatus: (action: actionInt) => dispatch(action),
+		setAccount: (action: actionInt) => dispatch(action)
 	}
 }
 

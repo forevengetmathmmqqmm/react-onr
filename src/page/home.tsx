@@ -1,11 +1,13 @@
+import { userInfo } from 'os';
 import React, { useEffect, useState } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 const Home = (props: any) => {
-  const [account, setAccount] = useState({nickname: '', age: 0});
+  const [account, setAccount] = useState({ nickname: '', age: 0 });
   useEffect(() => {
-    setAccount(props.account)
-  },[props]);
+    const userInfo = localStorage.getItem('userInfo');
+    setAccount(JSON.parse(userInfo as string));
+  }, [])
   return (
     <div>
       <div>{account.nickname}</div>

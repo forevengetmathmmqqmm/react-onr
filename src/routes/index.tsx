@@ -11,14 +11,11 @@ import Login from "../page/login";
 
 const routers = createHashRouter([{
   path: '/',
-  element: <Navigate to='/home' />
-}, {
-  path: '/',
   element: <Layout />,
   children: [
     {
       index: true,
-      element: <Home />,
+      element: <Navigate to='/home' />,
       handle: {
         hidden: true,
       }
