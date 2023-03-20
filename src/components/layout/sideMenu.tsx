@@ -5,12 +5,12 @@ import { NavLink, Outlet, RouteObject } from "react-router-dom";
 type MenuItem = Required<MenuProps>['items'][number];
 import routers from '../../routes/index';
 
-const itemlist: MenuItem[] = [];
 
 const sideMenu = () => {
   const [items, setItem] = useState<MenuItem[]>();
   useEffect(() => {
-    getItem(routers.routes[0].children as RouteObject[], itemlist);
+    const itemlist: MenuItem[] = [];
+    getItem(routers.routes[1].children as RouteObject[], itemlist);
   }, [])
   function getItem(list: RouteObject[], itemlist: any) {
     list.forEach(item => {

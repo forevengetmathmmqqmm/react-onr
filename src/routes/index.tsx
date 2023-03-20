@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppstoreOutlined, ContainerOutlined, } from '@ant-design/icons';
-import { createHashRouter } from 'react-router-dom';
+import { createHashRouter, Navigate } from 'react-router-dom';
 import Layout from '../components/layout/index';
 import Home from '../page/home';
 import DouyinUser from "../page/douyinUser";
@@ -10,6 +10,9 @@ import Weixinuser from "../page/weixinuser";
 import Login from "../page/login";
 
 const routers = createHashRouter([{
+  path: '/',
+  element: <Navigate to='/home' />
+}, {
   path: '/',
   element: <Layout />,
   children: [
