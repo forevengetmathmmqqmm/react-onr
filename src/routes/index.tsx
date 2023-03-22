@@ -8,6 +8,8 @@ import HandzUp from "../page/handzUp";
 import User from "../page/user";
 import Weixinuser from "../page/weixinuser";
 import Login from "../page/login";
+import Web3 from "../page/web3";
+
 
 const routers = createHashRouter([{
   path: '/',
@@ -38,6 +40,13 @@ const routers = createHashRouter([{
         icon: <ContainerOutlined />
       },
       children: [{
+        path: 'web3',
+        element: <Web3 />,
+        handle: {
+          name: 'web3',
+          path: '/user/web3'
+        },
+      }, {
         path: 'douyinUser',
         element: <DouyinUser />,
         handle: {
